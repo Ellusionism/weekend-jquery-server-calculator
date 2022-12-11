@@ -10,7 +10,6 @@ app.listen(PORT, () => {
 });
 
 let history = [];
-let equation = [];
 
 app.post(`/equation`, (req, res) => {
     let firstValue = req.body.firstNum;
@@ -31,24 +30,24 @@ app.post(`/equation`, (req, res) => {
         case `/`:
             answer = Number(firstValue) / Number(secondValue);
             break;
-    }
+    };
     // Determines selected operator, and runs the corresponding equation
 
     equation = {
         firstNum: firstValue,
         operator: operator,
         secondNum: secondValue,
-        result: answer
-    }
+        result: answer,
+    };
     //Creates an object that includes the posted data, as well as the result of the equation
 
     history.push(equation);
     // Pushes the new object into an array, to be used to render equation history
 
     res.sendStatus(201);
-})
+});
 
 app.get(`/history`, (req, res) => {
     res.send(history);
-})
+});
 // Sends the history array to the client side
