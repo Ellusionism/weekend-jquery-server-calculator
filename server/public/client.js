@@ -8,7 +8,6 @@ function onReady() {
     $(`.operatorButton`).on(`click`, function(){
         operator = $(this).html();
     });
-    
 };
 
 function clearInputs() {
@@ -21,14 +20,15 @@ function submit() {
     firstValue = $(`#firstNum`).val();
     secondValue = $(`#secondNum`).val();
     postEquation();
+    get
 
 };
 
 function postEquation() {
     let equation = {
-        firstNumber: firstValue,
+        firstNum: firstValue,
         operator: operator,
-        secondNumber: secondValue,
+        secondNum: secondValue,
     };
     $.ajax({
         url: `/equation`,
@@ -37,4 +37,22 @@ function postEquation() {
     }).then((response) => {
         console.log(response);
     });
+}
+
+function getAndDisplayResults() {
+    $.ajax({
+        url: '/history',
+        method: 'GET'
+}).then((history) => {
+  $('#history').empty()
+  for (let equation of history) {
+    $('#result').empty()
+    $('#result').append(`${equation.answer}`)
+    $('#history').append(`
+   <tr>
+      <td>${equation.firstNum} ${equation.operator} ${equation.secondNum} = ${equation.answer}</td>
+   </tr>
+    `)
+  }
+})
 }

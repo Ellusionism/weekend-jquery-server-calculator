@@ -9,13 +9,9 @@ app.listen(PORT, () => {
     console.log('listening on port', PORT)
 });
 
-let output = []
-let equation = {
-    firstNum: firstValue,
-    operator: operator,
-    secondNum: secondValue,
-    result: answer
-}
+let answer;
+let history = [];
+let equation = [];
 
 app.post(`/equation`, (req, res) => {
     let firstValue = req.body.firstNum;
@@ -36,7 +32,18 @@ app.post(`/equation`, (req, res) => {
             break;
     }
 
+    equation = {
+        firstNum: firstValue,
+        operator: operator,
+        secondNum: secondValue,
+        result: answer
+    }
 
+    history.push(equation);
 
     res.sendStatus(201);
+})
+
+app.get(`/results`, (req, res) => {
+    res.send(history);
 })
