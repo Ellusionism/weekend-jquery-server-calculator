@@ -2,16 +2,7 @@
     box-sizing: border-box;
 }
 
-#calculatorContainer {
+#answerOutput, #calculatorContainer, #header, #history, #historyOutput {
     margin: auto;
     text-align: center;
-}
-
-#header {
-    margin: auto;
-    text-align: center;
-}
-
-#result {
-    display: inline-block;
 }

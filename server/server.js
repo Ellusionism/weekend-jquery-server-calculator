@@ -9,14 +9,14 @@ app.listen(PORT, () => {
     console.log('listening on port', PORT)
 });
 
-let answer;
 let history = [];
 let equation = [];
 
 app.post(`/equation`, (req, res) => {
     let firstValue = req.body.firstNum;
-    let secondValue = req.body.secondNum;
     let operator = req.body.operator;
+    let secondValue = req.body.secondNum;
+    let answer = 0;
     switch (operator) {
         case `+`:
             answer = Number(firstValue) + Number(secondValue);
@@ -44,6 +44,6 @@ app.post(`/equation`, (req, res) => {
     res.sendStatus(201);
 })
 
-app.get(`/results`, (req, res) => {
+app.get(`/history`, (req, res) => {
     res.send(history);
 })

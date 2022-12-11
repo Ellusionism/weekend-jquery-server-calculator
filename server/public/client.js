@@ -19,17 +19,13 @@ function clearInputs() {
 function submit() {
     firstValue = $(`#firstNum`).val();
     secondValue = $(`#secondNum`).val();
-    postEquation();
-    get
 
-};
-
-function postEquation() {
     let equation = {
         firstNum: firstValue,
         operator: operator,
         secondNum: secondValue,
     };
+
     $.ajax({
         url: `/equation`,
         method: `POST`,
@@ -37,22 +33,25 @@ function postEquation() {
     }).then((response) => {
         console.log(response);
     });
+
+    getAndDisplayResults();
 }
 
 function getAndDisplayResults() {
     $.ajax({
         url: '/history',
         method: 'GET'
-}).then((history) => {
-  $('#history').empty()
-  for (let equation of history) {
-    $('#result').empty()
-    $('#result').append(`${equation.answer}`)
-    $('#history').append(`
-   <tr>
-      <td>${equation.firstNum} ${equation.operator} ${equation.secondNum} = ${equation.answer}</td>
-   </tr>
-    `)
-  }
-})
+    }).then((history) => {
+    $('#history').empty()
+    for (let equation of history) {
+        $('#result').empty()
+        $('#result').append(`${equation.result}`)
+        $('#history').append(`
+            <tr class="previousEquations">
+                <td>${equation.firstNum} ${equation.operator} 
+                ${equation.secondNum} = ${equation.result}</td>
+            </tr>
+            `)
+        }
+    })
 }
