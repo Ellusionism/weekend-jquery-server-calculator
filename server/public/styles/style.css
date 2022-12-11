@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+#calculatorContainer {
+    margin: auto;
+    text-align: center;
+}
+
+#header {
+    margin: auto;
+    text-align: center;
+}
+
+#result {
+    display: inline-block;
+}

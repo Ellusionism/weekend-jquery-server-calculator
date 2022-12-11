@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script/jquery.js"></script>
-    <script src="script/client.js"></script>
-    <link rel="stylesheet" href="styles/style.css">
+    <script src="./jquery.js"></script>
+    <script src="./client.js"></script>
+    <link rel="stylesheet" href="./styles/style.css">
     <title>Server Calculator</title>
 </head>
 <body>
@@ -18,12 +18,12 @@
     <main>
         <div id="calculatorContainer">
             <button id="clearButton">C</button>
-            <input id="firstNumber" type="number" placeholder="First Number">
-            <button id="addButton">+</button>
-            <button id="subtractButton">-</button>
-            <button id="multiplyButton">*</button>
-            <button id="divideButton">/</button>
-            <input id="secondNumber" type="number" placeholder="Second Number">
+            <input id="firstNum" type="number" placeholder="First Number">
+            <button class="operatorButton">+</button>
+            <button class="operatorButton">-</button>
+            <button class="operatorButton">*</button>
+            <button class="operatorButton">/</button>
+            <input id="secondNum" type="number" placeholder="Second Number">
             <button id="equalsButton">=</button>
             <div id="result">0</div>
         </div>
