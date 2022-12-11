@@ -40,9 +40,7 @@ function submit() {
         getAndDisplayResults();
         clearInputs();
     } else {
-        alert(`
-        Missing input, please make sure you have entered numbers into both inputs, AND selected an operator.
-        `);
+        alert(`Missing input, please make sure you have entered numbers into both inputs, AND selected an operator.`);
     }
 };
 // Submits values to an object, which is passed to the server. Then updates the DOM
