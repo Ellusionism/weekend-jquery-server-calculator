@@ -17,6 +17,7 @@ app.post(`/equation`, (req, res) => {
     let operator = req.body.operator;
     let secondValue = req.body.secondNum;
     let answer = 0;
+    // Setting variables from posted object to use on the server side
     switch (operator) {
         case `+`:
             answer = Number(firstValue) + Number(secondValue);
@@ -31,6 +32,7 @@ app.post(`/equation`, (req, res) => {
             answer = Number(firstValue) / Number(secondValue);
             break;
     }
+    // Determines selected operator, and runs the corresponding equation
 
     equation = {
         firstNum: firstValue,
@@ -38,8 +40,10 @@ app.post(`/equation`, (req, res) => {
         secondNum: secondValue,
         result: answer
     }
+    //Creates an object that includes the posted data, as well as the result of the equation
 
     history.push(equation);
+    // Pushes the new object into an array, to be used to render equation history
 
     res.sendStatus(201);
 })
@@ -47,3 +51,4 @@ app.post(`/equation`, (req, res) => {
 app.get(`/history`, (req, res) => {
     res.send(history);
 })
+// Sends the history array to the client side
